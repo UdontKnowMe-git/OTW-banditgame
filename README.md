@@ -22,5 +22,8 @@ I am currently working through the **Bandit** wargames. These challenges are des
 - [ ] **Phase 4: Active Bug Bounty Hunting** (Planned: Hacker101 / Bugcrowd)
 
 ## Latest Breakthroughs
-* **Level 4 -> 5:** Learned how to use `file` and wildcards to distinguish human-readable text from binary data.
-* **Level 5 -> 6:** Mastered the `find` command to search for specific file sizes and attributes across recursive directories.
+* **Level 6 -> 7: Mastered I/O Redirection & Stream Merging**
+  * Learned that Linux separates data into **stdout** (Success) and **stderr** (Errors).
+  * Discovered the `2>/dev/null` trick to silence permission errors while searching system-wide directories.
+  * Mastered the `2>&1` operator to merge streams, allowing `grep` to filter both successful output and error messages simultaneously.
+  * Internalized the difference between `>` (overwrite) and `>>` (append) for persistent note-taking.
