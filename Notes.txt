@@ -165,3 +165,32 @@ connect to bandit6 with given password
 
 - Level 6
 
+Had new concepts such as how a file can be owned by a user as well as a group. Had to find a file from a random
+location on the server where the file was owned by group bandit6, owned by user bandit7, is exactly 33 bytes.
+Used find with user and group flags, also "2>&1" to redirect the stderr stream into the stdout stream for proper
+grep handling and giving me exactly which files to look for.
+
+Output:
+
+bandit6@bandit:~$ find / -size 33c -user bandit7 -group bandit6 2>&1 | grep "Permission denied" -v
+find: ‘/proc/99/task/99/fd/6’: No such file or directory
+find: ‘/proc/99/task/99/fdinfo/6’: No such file or directory
+find: ‘/proc/99/fd/5’: No such file or directory
+find: ‘/proc/99/fdinfo/5’: No such file or directory
+/var/lib/dpkg/info/bandit7.password
+bandit6@bandit:~$ cat /var/lib/dpkg/info/bandit7.password
+morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj
+
+Another way is to use the /dev/null "Linux void" to just filter out the stderr stream entirely
+
+Output:
+
+bandit6@bandit:~$ find / -size 33c -user bandit7 -group bandit6 2>/dev/null
+/var/lib/dpkg/info/bandit7.password
+bandit6@bandit:~$
+____________
+
+connect to bandit7 with given password
+
+
+- Level 7
