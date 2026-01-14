@@ -229,3 +229,22 @@ connect to bandit9 with the given password
 
 
 - Level 9
+
+Password was one of the few human readable lines in the file data.txt
+Used strings to print it out and grep to show only the lines with trailing "=" symbols
+
+Output:
+
+bandit9@bandit:~$ dir
+data.txt
+bandit9@bandit:~$ strings data.txt | grep "=="
+========== the
+========== password
+E========== is
+5========== FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey
+____________
+
+connect to bandit10 with the given password
+
+
+- Level 10
