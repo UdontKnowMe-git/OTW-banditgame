@@ -194,3 +194,19 @@ connect to bandit7 with given password
 
 
 - Level 7
+
+Had to find the password, which was near the word "millionth" inside a very large text file.
+Used grep to get the line out
+
+Output:
+
+bandit7@bandit:~$ dir
+data.txt
+bandit7@bandit:~$ grep "millionth" data.txt
+millionth       dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc
+____________
+
+connect to bandit8 with given password
+
+
+- Level 8
