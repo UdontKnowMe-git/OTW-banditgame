@@ -1,0 +1,167 @@
+- Level 0
+
+Basic usage of dir and cat
+
+Output:
+
+bandit0@bandit:~$ dir
+readme
+bandit0@bandit:~$ cat readme
+Congratulations on your first steps into the bandit game!!
+Please make sure you have read the rules at https://overthewire.org/rules/
+If you are following a course, workshop, walkthrough or other educational activity,
+please inform the instructor about the rules as well and encourage them to
+contribute to the OverTheWire community so we can keep these games free!
+
+The password you are looking for is: ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If
+____________
+
+connect to bandit1 now with given password
+
+
+- Level 1
+
+Had to read contents of the file named "-" in the root directory. Tricky, but completed it
+
+Output:
+
+bandit1@bandit:~$ dir
+-
+bandit1@bandit:~$ cat -
+
+
+^C
+bandit1@bandit:~$ nano 0
+Unable to create directory /home/bandit1/.local/share/nano/: No such file or directory
+It is required for saving/loading search history or cursor positions.
+
+bandit1@bandit:~$ nano -
+Reading data from keyboard; type ^D or ^D^D to finish.
+Unable to create directory /home/bandit1/.local/share/nano/: No such file or directory
+It is required for saving/loading search history or cursor positions.
+
+bandit1@bandit:~$ cat "-"
+^C
+bandit1@bandit:~$ cat ./-
+263JGJPfgU6LtdEvgfWU1XP5yac29mFx
+____________
+
+connect to bandit2 with the new password
+
+
+- Level 2
+
+Had to read contents of a file which had spaces in its name. Bypassed it with using quotations
+so that the path is a string for it to navigate to
+
+Output:
+
+bandit2@bandit:~$ dir
+--spaces in this filename--
+bandit2@bandit:~$ cat "--spaces in this filename--"
+cat: unrecognized option '--spaces in this filename--'
+Try 'cat --help' for more information.
+bandit2@bandit:~$ cat "./--spaces in this filename--"
+MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx
+____________
+
+connect to bandit3 with new password
+
+
+- Level 3
+
+File was hidden in the inhere directory, used the -a flag of dir to list all hidden files in the directory
+Can also use the "find" command in the directory of the file.
+find <directory>
+or 
+find    (finds all files in the current directory)
+
+Output:
+
+bandit3@bandit:~$ dir
+inhere
+bandit3@bandit:~$ dir inhere
+bandit3@bandit:~$ dir -a inhere
+.  ..  ...Hiding-From-You
+bandit3@bandit:~$ cat "./inhere/...Hiding-From-You"
+2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ
+bandit3@bandit:~$
+____________
+
+connect to bandit4 with new password
+
+
+- Level 4
+
+Had to find the text in the only human readable file among multiple files inside the inhere directory
+
+Output:
+
+bandit4@bandit:~$ dir
+inhere
+bandit4@bandit:~$ cd inhere
+bandit4@bandit:~/inhere$ file
+Usage: file [-bcCdEhikLlNnprsSvzZ0] [--apple] [--extension] [--mime-encoding]
+            [--mime-type] [-e <testname>] [-F <separator>]  [-f <namefile>]
+            [-m <magicfiles>] [-P <parameter=value>] [--exclude-quiet]
+            <file> ...
+       file -C [-m <magicfiles>]
+       file [--help]
+bandit4@bandit:~/inhere$ find
+.
+./-file02
+./-file04
+./-file08
+./-file00
+./-file07
+./-file06
+./-file01
+./-file03
+./-file05
+./-file09
+bandit4@bandit:~/inhere$ file ./*
+./-file00: data
+./-file01: data
+./-file02: data
+./-file03: data
+./-file04: data
+./-file05: data
+./-file06: data
+./-file07: ASCII text
+./-file08: data
+./-file09: data
+bandit4@bandit:~/inhere$ cat ./-file07
+4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw
+____________
+
+connect to bandit5 with given password
+
+
+- Level 5
+
+Had to find password from a bunch of files, constraints where the password file was 1033 bytes and non executable
+also Human readable
+
+used find command with its flags
+
+Output:
+
+bandit5@bandit:~$ dir
+inhere
+bandit5@bandit:~$ cd inhere
+bandit5@bandit:~/inhere$ dir
+maybehere00  maybehere02  maybehere04  maybehere06  maybehere08  maybehere10  maybehere12  maybehere14  maybehere16  maybehere18
+maybehere01  maybehere03  maybehere05  maybehere07  maybehere09  maybehere11  maybehere13  maybehere15  maybehere17  maybehere19
+bandit5@bandit:~/inhere$ find . -type f -size 1033c
+./maybehere07/.file2
+bandit5@bandit:~/inhere$ cat ./maybehere07/.file2
+HWasnPhtq9AVKe0dmk45nxy20cvUa6EG
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        bandit5@bandit:~/inhere$
+bandit5@bandit:~/inhere$
+____________
+
+connect to bandit6 with given password
+
+
+- Level 6
+
