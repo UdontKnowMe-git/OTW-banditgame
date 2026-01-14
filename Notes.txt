@@ -210,3 +210,22 @@ connect to bandit8 with given password
 
 
 - Level 8
+
+The password is the string occurring only once in the data.txt file
+Used uniq and sort command, Had to sort first because uniq wont work unless
+the duplicate lines are next to each other.
+
+Output:
+
+bandit8@bandit:~$ dir
+data.txt
+bandit8@bandit:~$ du data.txt
+36      data.txt
+bandit8@bandit:~$ sort data.txt | uniq -u
+4CKMh1JI91bUIZZPXDqGanal4xvAg0JM
+____________
+
+connect to bandit9 with the given password
+
+
+- Level 9
