@@ -248,3 +248,25 @@ connect to bandit10 with the given password
 
 
 - Level 10
+
+Password was in base64 format inside data.txt file
+Had to decode it to get the password
+Note: Encryption is not the same as Encoding, Encoded things can be decoded by anyone,
+meanwhile Decrypting can only be done by users with the key. Encoding is usually used for
+data transportation like images to other systems which are text based, after which they 
+can be decoded
+
+Output:
+
+bandit10@bandit:~$ dir
+data.txt
+bandit10@bandit:~$ cat data.txt
+VGhlIHBhc3N3b3JkIGlzIGR0UjE3M2ZaS2IwUlJzREZTR3NnMlJXbnBOVmozcVJyCg==
+bandit10@bandit:~$ base64 -d data.txt
+The password is dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr
+____________
+
+connect to bandit11 with the given password
+
+
+- Level 11
