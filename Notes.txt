@@ -271,6 +271,20 @@ connect to bandit11 with the given password
 
 - Level 11
 
+The file was encrypted using Caesar cipher (Normal shift cipher) where key was 13
+Used the tr command to solve the cipher
+
+Output:
+
+bandit11@bandit:~$ dir
+data.txt
+bandit11@bandit:~$ cat data.txt
+Gur cnffjbeq vf 7k16JArUVv5LxVuJfsSVdbbtaHGlw9D4
+bandit11@bandit:~$ cat data.txt | tr 'A-Za-z' 'N-ZA-Mn-za-m'
+The password is 7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4
+____________
+
+connect to bandit12 with the given password
 
 
 - Level 12
