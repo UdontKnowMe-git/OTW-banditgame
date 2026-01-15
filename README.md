@@ -27,3 +27,8 @@ I am currently working through the **Bandit** wargames. These challenges are des
   * Discovered the `2>/dev/null` trick to silence permission errors while searching system-wide directories.
   * Mastered the `2>&1` operator to merge streams, allowing `grep` to filter both successful output and error messages simultaneously.
   * Internalized the difference between `>` (overwrite) and `>>` (append) for persistent note-taking.
+* **Level 12 -> 13: The Hex/Compression Gauntlet**
+  * **Objective:** Reverse a hex dump and peel back multiple layers of nested compression.
+  * **Tools Used:** `xxd -r` (Hex reverse), `file` (Signature analysis), `tar`, `gzip`, `bzip2`.
+  * **Key Takeaway:** Filename extensions are irrelevant in Linux; the "Magic Bytes" (headers) determined by the `file` command are the only truth.
+  * **Workflow:** Revert Hex -> Identify Type -> Rename -> Decompress -> Repeat.
