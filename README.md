@@ -32,3 +32,7 @@ I am currently working through the **Bandit** wargames. These challenges are des
   * **Tools Used:** `xxd -r` (Hex reverse), `file` (Signature analysis), `tar`, `gzip`, `bzip2`.
   * **Key Takeaway:** Filename extensions are irrelevant in Linux; the "Magic Bytes" (headers) determined by the `file` command are the only truth.
   * **Workflow:** Revert Hex -> Identify Type -> Rename -> Decompress -> Repeat.
+* **Level 13 -> 14: Data Exfiltration & Windows SSH Hardening**
+  * **The Hurdle:** Internal pivoting via localhost was blocked by server-side resource rules.
+  * **The Solution:** Exfiltrated the RSA Private Key to the local host (laptop) to initiate a direct connection to the target user (`bandit14`).
+  * **Technical Challenge:** Windows NTFS permissions are broader than Linux. Had to use `icacls` to strip inherited permissions so the OpenSSH client would accept the key as "secure."
