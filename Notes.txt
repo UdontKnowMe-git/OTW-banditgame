@@ -414,3 +414,54 @@ ____________
 connect to bandit14 with given ssh key
 
 
+- Level 14
+
+I had to explore a whole new dimension of windows commands, since i use a windows laptop
+where i used the icalcs command to elevate permissions to the ssh key which i stored locally
+on my pc, then i used that to connect into level 14. The password for next level was in 
+/etc/bandit_pass/bandit14 which was accessed with no problems using cat.
+
+Output:
+
+:\Users\NEXT GEN\Desktop\Overthewire>ssh -i bandit.key bandit14@bandit.labs.overthewire.org -p 2220
+                         _                     _ _ _
+                        | |__   __ _ _ __   __| (_) |_
+                        | '_ \ / _` | '_ \ / _` | | __|
+                        | |_) | (_| | | | | (_| | | |_
+                        |_.__/ \__,_|_| |_|\__,_|_|\__|
+
+
+                      This is an OverTheWire game server.
+            More information on http://www.overthewire.org/wargames
+
+backend: gibson-0
+Bad permissions. Try removing permissions for user: BUILTIN\\Users (S-1-5-32-545) on file C:/Users/NEXT GEN/Desktop/Overthewire/bandit.key.
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Permissions for 'bandit.key' are too open.
+It is required that your private key files are NOT accessible by others.
+This private key will be ignored.
+Load key "bandit.key": bad permissions
+bandit14@bandit.labs.overthewire.org's password:
+
+C:\Users\NEXT GEN\Desktop\Overthewire>icacls .\bandit.key /inheritance:r
+processed file: .\bandit.key
+Successfully processed 1 files; Failed processing 0 files
+
+C:\Users\NEXT GEN\Desktop\Overthewire>icacls .\bandit.key /grant:r "My_Username_was_here":R
+processed file: .\bandit.key
+Successfully processed 1 files; Failed processing 0 files
+
+C:\Users\NEXT GEN\Desktop\Overthewire>ssh -i bandit.key bandit14@bandit.labs.overthewire.org -p 2220
+
+--- OTW logo and other misc info ---
+
+bandit14@bandit:~$ cat /etc/bandit_pass/bandit14
+MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS
+____________
+
+connect to bandit15 with given password
+
+
+- Level 15
