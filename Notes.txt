@@ -400,3 +400,17 @@ connect to bandit13 with given password
 
 
 - Level 13
+
+The password for the next level was a SSH key, which i had to use to get into bandit14
+
+Output:
+
+bandit13@bandit:~$ cat sshkey.private
+-----BEGIN RSA PRIVATE KEY-----
+OOGA BOOGA PRIVATE SSH KEY HERE
+-----END RSA PRIVATE KEY-----
+____________
+
+connect to bandit14 with given ssh key
+
+
