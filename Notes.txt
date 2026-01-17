@@ -654,3 +654,22 @@ connect to bandit17 with given key
 
 
 - Level 18
+
+Had to find the line which differed in the files passwords.old and passwords.new
+Used the diff command
+
+Output:
+
+bandit17@bandit:~$ dir
+passwords.new  passwords.old
+bandit17@bandit:~$ diff passwords.old passwords.new
+42c42
+< BMIOFKM7CRSLI97voLp3TD80NAq5exxk
+---
+> x2gLTTjFwMOhQ8oWNbMN362QKxfRqGlO
+____________
+
+connect to bandit18 with given password
+
+
+- Level 19
