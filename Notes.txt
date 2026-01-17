@@ -449,7 +449,7 @@ C:\Users\NEXT GEN\Desktop\Overthewire>icacls .\bandit.key /inheritance:r
 processed file: .\bandit.key
 Successfully processed 1 files; Failed processing 0 files
 
-C:\Users\NEXT GEN\Desktop\Overthewire>icacls .\bandit.key /grant:r "My_Username_was_here":R
+C:\Users\NEXT GEN\Desktop\Overthewire>icacls .\bandit.key /grant:r "NEXt GEN":R
 processed file: .\bandit.key
 Successfully processed 1 files; Failed processing 0 files
 
@@ -485,3 +485,172 @@ connect to bandit15 with given password
 
 
 - Level 16
+
+Had to retrieve password from the port 30001 using SSL/TLS encryption. Used the openssl s_client
+command to establish connection to the server and submitted the bandit15 password, to get the new
+bandit16 password.
+
+Output:
+
+bandit15@bandit:~$ openssl s_client localhost:30001
+CONNECTED(00000003)
+Can't use SSL_get_servername
+depth=0 CN = SnakeOil
+verify error:num=18:self-signed certificate
+verify return:1
+depth=0 CN = SnakeOil
+verify return:1
+---
+Certificate chain
+ 0 s:CN = SnakeOil
+   i:CN = SnakeOil
+   a:PKEY: rsaEncryption, 4096 (bit); sigalg: RSA-SHA256
+   v:NotBefore: Jun 10 03:59:50 2024 GMT; NotAfter: Jun  8 03:59:50 2034 GMT
+---
+Server certificate
+-----BEGIN CERTIFICATE-----
+MIIFBzCCAu+gAwIBAgIUBLz7DBxA0IfojaL/WaJzE6Sbz7cwDQYJKoZIhvcNAQEL
+BQAwEzERMA8GA1UEAwwgarbagevaluestoBG0LoEJi0C+UPwS8CDngJB4TyrZqEld3
+rH87W+Et1t/Nepoc/Eoaux9PFp5VPXP+qwQGmhir/hv7OsgBhrkYuhkjxZ8+1uk7
+tUWC/XM0mpLoxsq6vVl3AJaJe1ivdA9xLytsuG4iv02Juc593HXYR8yOpow0Eq2T
+U5EyeuFg5RXYwAPi7ykw1PW7zAPL4MlonEVz+QXOSx6eyhimp1VZC11SCg==
+-----END CERTIFICATE-----
+subject=CN = SnakeOil
+issuer=CN = SnakeOil
+---
+No client certificate CA names sent
+Peer signing digest: SHA256
+Peer signature type: RSA-PSS
+Server Temp Key: X25519, 253 bits
+---
+SSL handshake has read 2103 bytes and written 373 bytes
+Verification error: self-signed certificate
+---
+New, TLSv1.3, Cipher is TLS_AES_256_GCM_SHA384
+Server public key is 4096 bit
+Secure Renegotiation IS NOT supported
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+Early data was not sent
+Verify return code: 18 (self-signed certificate)
+---
+---
+Post-Handshake New Session Ticket arrived:
+SSL-Session:
+    Protocol  : TLSv1.3
+    Cipher    : TLS_AES_256_GCM_SHA384
+    Session-ID: 999536378A81FEEB44F7D63A80871FBA933958CEF7BD535AC8CFB0222875499C
+    Session-ID-ctx:
+    Resumption PSK: A1E3C8C0C93104C5E6D34E1E70D4BCEC6940B6ECD753ABB9692ABE7CDCB42CBA5DC5CE13E47048A716956C1C9649D509
+    PSK identity: None
+    PSK identity hint: None
+    SRP username: None
+    TLS session ticket lifetime hint: 300 (seconds)
+    TLS session ticket:
+    0000 - 93 84 3e 4f 1d d6 83 ee-2d bc 61 e7 86 61 1e 88   ..>O....-.a..a..
+    0010 - df d4 90 97 ea 28 c4 99-9b cb 8e 46 c7 f4 ab 97   .....(.....F....
+    0020 - df e4 66 45 27 7d 35 f2-d0 de d8 2e c2 e6 15 93   ..fE'}5.........
+    0030 - 36 64 e8 d0 f7 34 14 e1-0e 8a 4b b7 ed eb a9 74   6d...4....K....t
+    0040 - bf 48 c6 e4 ad 38 8a 6b-94 e3 be c3 3a 38 8b 7e   .H...8.k....:8.~
+    0050 - 66 c1 1d 32 8b 94 59 c7-3e 04 78 39 e6 5c 33 fd   f..2..Y.>.x9.\3.
+    0060 - 08 69 75 a1 53 ed 1c 26-d1 d8 0b e6 7b cf 1b 67   .iu.S..&....{..g
+    0070 - 59 4f 3a e2 27 17 c3 eb-c4 89 ef e4 e4 1b 95 69   YO:.'..........i
+    0080 - b8 12 c8 5d 1f a8 f8 77-50 7c 47 61 f9 2b 90 91   ...]...wP|Ga.+..
+    0090 - 05 a7 b9 f3 dd 76 ca a4-59 d8 5c 62 74 44 09 49   .....v..Y.\btD.I
+    00a0 - 65 b0 a1 79 dd 21 e2 b1-44 31 c5 ef c4 e2 07 38   e..y.!..D1.....8
+    00b0 - 07 6d ec a0 d8 63 01 0a-5f da f5 84 f3 5b 4e 49   .m...c.._....[NI
+    00c0 - 9f 6b dc 3b ba c4 58 0e-9b 59 54 2d b9 68 41 97   .k.;..X..YT-.hA.
+    00d0 - 95 2a 13 04 79 4f 14 e8-6e 5d 64 53 a5 39 0b e5   .*..yO..n]dS.9..
+
+    Start Time: 1768646729
+    Timeout   : 7200 (sec)
+    Verify return code: 18 (self-signed certificate)
+    Extended master secret: no
+    Max Early Data: 0
+---
+read R BLOCK
+---
+Post-Handshake New Session Ticket arrived:
+SSL-Session:
+    Protocol  : TLSv1.3
+    Cipher    : TLS_AES_256_GCM_SHA384
+    Session-ID: B57C92D523671F3C6E1D19E559A151F4B843872D6D6E86C52D6ED7CF0C728061
+    Session-ID-ctx:
+    Resumption PSK: 2381CD81029F6C63A2DA40A19BA213AE8B9AF5FE2B2FBCCE19E3DFDB94C46B96B0E1DA1EB7E7E884FB99AF3A24DD2B61
+    PSK identity: None
+    PSK identity hint: None
+    SRP username: None
+    TLS session ticket lifetime hint: 300 (seconds)
+    TLS session ticket:
+    0000 - 93 84 3e 4f 1d d6 83 ee-2d bc 61 e7 86 61 1e 88   ..>O....-.a..a..
+    0010 - d4 06 19 86 c0 06 ea d1-8e ce 07 16 be d7 f6 29   ...............)
+    0020 - 3c ae 1d 07 e5 80 cc f7-e5 b3 87 b6 d7 83 fa 48   <..............H
+    0030 - 4e e8 9f 37 b2 10 a7 97-1a b2 c7 93 c9 26 a4 9e   N..7.........&..
+    0040 - f6 a7 9b 78 8d ad 51 e9-dc 71 69 6c cb 66 3c 18   ...x..Q..qil.f<.
+    0050 - 18 bc dd 57 2e 00 7d d0-57 4b 1d d0 40 fa be 43   ...W..}.WK..@..C
+    0060 - c4 51 59 9b 28 d2 c8 25-0d fd d0 4c 2b ef 53 3e   .QY.(..%...L+.S>
+    0070 - 68 cc b3 d0 e8 42 fc b7-80 17 7b 5b 46 11 1a e2   h....B....{[F...
+    0080 - 61 4e 9a c7 17 3e e6 ca-f3 f2 ea 07 8f 8f d4 9e   aN...>..........
+    0090 - d0 e9 53 82 f9 19 01 c5-52 d7 6d 16 d8 6a 09 19   ..S.....R.m..j..
+    00a0 - 2f bc 0e 52 7e 84 b7 92-95 14 bd f1 11 42 be 53   /..R~........B.S
+    00b0 - d2 6c 1d 13 12 f2 94 14-92 30 60 91 f2 87 cb 41   .l.......0`....A
+    00c0 - a8 e5 72 b1 f7 43 d2 40-d5 78 ea 30 27 e9 3b 69   ..r..C.@.x.0'.;i
+    00d0 - b0 aa 29 b3 ec f6 3c cd-64 5d e4 4f 5e 6e 0e a5   ..)...<.d].O^n..
+
+    Start Time: 1768646729
+    Timeout   : 7200 (sec)
+    Verify return code: 18 (self-signed certificate)
+    Extended master secret: no
+    Max Early Data: 0
+---
+read R BLOCK
+8xCjnmgoKbGLhHFAZlGE5Tmu4M2tKJQo
+Correct!
+kSkvUpMQ7lBYyCM4GBPvCvT1BfWRy0Dx
+
+closed
+____________
+
+connect to bandit16 using given password
+
+
+- Level 17
+
+Ran into a bit of a hurdle when the openssl server kept throwing KEYUPDATE message repeatedly,
+solved it by using echo command to immediately send the password as soon as the connection is made
+to avoid buffer, and it worked
+
+Output:
+
+bandit16@bandit:~$ nmap -sV -p 31046,31518,31691,31790,31960 localhost
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2026-01-17 11:14 UTC
+Stats: 0:02:02 elapsed; 0 hosts completed (1 up), 1 undergoing Service Scan
+Service scan Timing: About 80.00% done; ETC: 11:17 (0:00:31 remaining)
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.00013s latency).
+
+PORT      STATE SERVICE     VERSION
+31046/tcp open  echo
+31518/tcp open  ssl/echo
+31691/tcp open  echo
+31790/tcp open  ssl/unknown
+31960/tcp open  echo
+
+bandit16@bandit:~$ echo "kSkvUpMQ7lBYyCM4GBPvCvT1BfWRy0Dx" | openssl s_client -connect localhost:31790 -quiet
+Can't use SSL_get_servername
+depth=0 CN = SnakeOil
+verify error:num=18:self-signed certificate
+verify return:1
+depth=0 CN = SnakeOil
+verify return:1
+Correct!
+-----BEGIN RSA PRIVATE KEY-----
+woombaweembawoombeemba RSA key here
+-----END RSA PRIVATE KEY-----
+____________
+
+connect to bandit17 with given key
+
+
+- Level 18
