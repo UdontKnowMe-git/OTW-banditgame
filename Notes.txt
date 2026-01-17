@@ -461,7 +461,27 @@ bandit14@bandit:~$ cat /etc/bandit_pass/bandit14
 MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS
 ____________
 
+
+- Level 15
+
+You cant directly connect to bandit15 with the above password, you must actually submit it to port 30000
+on the bandit labs host, localhost in this case. So, nc (netcat) was used on localhost and given
+port, submitted the password and got the next level password promptly.
+
+Output:
+
+bandit14@bandit:~$ cat /etc/bandit_pass/bandit14
+MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS
+bandit14@bandit:~$ nc localhost 30000
+MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS
+Correct!
+8xCjnmgoKbGLhHFAZlGE5Tmu4M2tKJQo
+
+^C
+bandit14@bandit:~$
+____________
+
 connect to bandit15 with given password
 
 
-- Level 15
+- Level 16
