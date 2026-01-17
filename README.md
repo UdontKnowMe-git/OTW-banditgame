@@ -36,3 +36,21 @@ I am currently working through the **Bandit** wargames. These challenges are des
   * **The Hurdle:** Internal pivoting via localhost was blocked by server-side resource rules.
   * **The Solution:** Exfiltrated the RSA Private Key to the local host (laptop) to initiate a direct connection to the target user (`bandit14`).
   * **Technical Challenge:** Windows NTFS permissions are broader than Linux. Had to use `icacls` to strip inherited permissions so the OpenSSH client would accept the key as "secure."
+  *
+* **Level 15 -> 16: Encrypted Communication (SSL/TLS)**
+ * **Concept:** Transitioning from plaintext (HTTP/Telnet style) to encrypted streams.
+ * **Tool:** `openssl s_client -connect localhost:30001`
+ * **Key Insight:** Standard tools like `nc` (Netcat) cannot negotiate the SSL/TLS handshake. Using `openssl` allows the client to provide the necessary encryption layer to "talk" to the service.
+ * **Discovery:** Learned to look for the `---` end-of-certificate marker to know when the connection is ready for input.
+
+* ** Level 16 -> 17: Network Reconnaissance & Service Fingerprinting**
+ * **Concept:** Hunting for a specific needle in a haystack of open ports.
+ * **Tool:** `nmap -sV -p 31000-32000 localhost`
+ * **The Breakthrough:** Identified that an "open" port isn't always the "right" port. Used Service Versioning (`-sV`) to find the `ssl/unknown` service while ignoring the `echo` and `ssl/echo` red herrings.
+ * **Technical Skill:** Handshaking with multiple ports to identify logic-based responses vs. simple mirrors.
+
+* ** Level 18 -> 19: Bypassing Shell Restrictions**
+ * **Concept:** Non-interactive shell execution.
+ * **The Hurdle:** An `.exit` or `logout` command placed in the remote user's `.bashrc` or `.profile` to kill interactive sessions immediately.
+ * **The Solution:** Appending a command string to the SSH connection: `ssh bandit18@host -p 2220 "cat readme"`.
+ * **Insight:** Learned that SSH can execute single commands in a non-interactive buffer, bypassing the scripts that only trigger for interactive TTY sessions.
