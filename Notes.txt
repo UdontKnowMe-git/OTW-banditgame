@@ -701,3 +701,19 @@ connect to bandit19 with given password
 
 
 - Level 20
+
+We are told to use the given setuid binary to then read the password inside
+/etc/bandit_pass/bandit20
+
+Output:
+
+bandit19@bandit:~$ ./bandit20-do whoami
+bandit20
+bandit19@bandit:~$ ./bandit20-do cat /etc/bandit_pass/bandit20
+0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO
+____________
+
+connect to bandit20 with given password
+
+
+- Level 21
