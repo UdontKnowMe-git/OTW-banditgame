@@ -673,3 +673,31 @@ connect to bandit18 with given password
 
 
 - Level 19
+
+As we connect to bandit18, it immediately logs us out, since it seems the "bandit"
+has modified the .bashrc file. Luckily its mentioned that the password is in the readme
+file in home directory, so we just modify our ssh connection so it executes the cat command
+instead of logging in.
+
+Output:
+
+PS C:\Users\NEXT GEN\Desktop\Overthewire> ssh bandit18@bandit.labs.overthewire.org -p 2220 "cat readme"
+                         _                     _ _ _
+                        | |__   __ _ _ __   __| (_) |_
+                        | '_ \ / _` | '_ \ / _` | | __|
+                        | |_) | (_| | | | | (_| | | |_
+                        |_.__/ \__,_|_| |_|\__,_|_|\__|
+
+
+                      This is an OverTheWire game server.
+            More information on http://www.overthewire.org/wargames
+
+backend: gibson-0
+bandit18@bandit.labs.overthewire.org's password:
+cGWpMaKXVwDUNgPAVJbWYuGHVn9zl3j8
+____________
+
+connect to bandit19 with given password
+
+
+- Level 20
