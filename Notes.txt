@@ -28,18 +28,7 @@ Output:
 bandit1@bandit:~$ dir
 -
 bandit1@bandit:~$ cat -
-
-
 ^C
-bandit1@bandit:~$ nano 0
-Unable to create directory /home/bandit1/.local/share/nano/: No such file or directory
-It is required for saving/loading search history or cursor positions.
-
-bandit1@bandit:~$ nano -
-Reading data from keyboard; type ^D or ^D^D to finish.
-Unable to create directory /home/bandit1/.local/share/nano/: No such file or directory
-It is required for saving/loading search history or cursor positions.
-
 bandit1@bandit:~$ cat "-"
 ^C
 bandit1@bandit:~$ cat ./-
@@ -717,3 +706,22 @@ connect to bandit20 with given password
 
 
 - Level 21
+
+Had to use foreground and background tasks to run a listener and the client at the same time.
+This concept is called Job control or Backgrounding. Made use of tmux to create two terminals
+split in the same screen to create a listener and then use the binary to echo to the listener
+
+Output:
+
+bandit20@bandit:~$ nc -l -p 1222                                  │bandit20@bandit:~$ ./suconnect 1222
+0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO                                  │0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO
+EeoULMCra2q0dSkYj561DX7s1CpBuOBt                                  │Read: 0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO
+bandit20@bandit:~$                                                │Password matches, sending next password
+                                                                  │bandit20@bandit:~$
+
+____________
+
+connect to bandit21 using above password
+
+
+- Level 22
