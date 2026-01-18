@@ -36,7 +36,6 @@ I am currently working through the **Bandit** wargames. These challenges are des
   * **The Hurdle:** Internal pivoting via localhost was blocked by server-side resource rules.
   * **The Solution:** Exfiltrated the RSA Private Key to the local host (laptop) to initiate a direct connection to the target user (`bandit14`).
   * **Technical Challenge:** Windows NTFS permissions are broader than Linux. Had to use `icacls` to strip inherited permissions so the OpenSSH client would accept the key as "secure."
-  *
 * **Level 15 -> 16: Encrypted Communication (SSL/TLS)**
  * **Concept:** Transitioning from plaintext (HTTP/Telnet style) to encrypted streams.
  * **Tool:** `openssl s_client -connect localhost:30001`
