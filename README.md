@@ -42,13 +42,13 @@ I am currently working through the **Bandit** wargames. These challenges are des
   * **Key Insight:** Standard tools like `nc` (Netcat) cannot negotiate the SSL/TLS handshake. Using `openssl` allows the client to provide the necessary encryption layer to "talk" to the service.
   * **Discovery:** Learned to look for the `---` end-of-certificate marker to know when the connection is ready for input.
 
-* ** Level 16 -> 17: Network Reconnaissance & Service Fingerprinting**
+* **Level 16 -> 17: Network Reconnaissance & Service Fingerprinting**
   * **Concept:** Hunting for a specific needle in a haystack of open ports.
   * **Tool:** `nmap -sV -p 31000-32000 localhost`
   * **The Breakthrough:** Identified that an "open" port isn't always the "right" port. Used Service Versioning (`-sV`) to find the `ssl/unknown` service while ignoring the `echo` and `ssl/echo` red herrings.
   * **Technical Skill:** Handshaking with multiple ports to identify logic-based responses vs. simple mirrors.
 
-* ** Level 18 -> 19: Bypassing Shell Restrictions**
+* **Level 18 -> 19: Bypassing Shell Restrictions**
   * **Concept:** Non-interactive shell execution.
   * **The Hurdle:** An `.exit` or `logout` command placed in the remote user's `.bashrc` or `.profile` to kill interactive sessions immediately.
   * **The Solution:** Appending a command string to the SSH connection: `ssh bandit18@host -p 2220 "cat readme"`.
