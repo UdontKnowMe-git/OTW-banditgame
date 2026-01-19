@@ -53,3 +53,8 @@ I am currently working through the **Bandit** wargames. These challenges are des
   * **The Hurdle:** An `.exit` or `logout` command placed in the remote user's `.bashrc` or `.profile` to kill interactive sessions immediately.
   * **The Solution:** Appending a command string to the SSH connection: `ssh bandit18@host -p 2220 "cat readme"`.
   * **Insight:** Learned that SSH can execute single commands in a non-interactive buffer, bypassing the scripts that only trigger for interactive TTY sessions.
+* **Level 21 -> 22: Cron Job Analysis**
+  * **Tool:** `ls /etc/cron.d/` and `cat`.
+  * **Concept:** Scheduled tasks (Cron) can be used to perform background actions as different users.
+  * **Technique:** Identified a script running every minute as `bandit22`. By analyzing the script's contents, I can find where it stores processed data or temporary files.
+  * **Logic:** If a root/high-privilege script writes to a world-readable location (like `/tmp`), the security of the password is compromised.
