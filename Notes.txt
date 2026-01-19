@@ -726,6 +726,10 @@ connect to bandit21 using above password
 
 - Level 22
 
+Got introduced to automation and executing scheduled tasks via cron. Checked cron directory to find
+the hidden job which was being executed every minute, and then used it to get the bandit password from
+the /tmp/ directory according to its bash code
+
 Output:
 
 bandit21@bandit:~$ dir /etc/cron.d
@@ -743,3 +747,6 @@ cat /etc/bandit_pass/bandit22 > /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
 bandit21@bandit:~$ cat /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
 tRae0UfB9v0UzbCdn9cY0gQnds9GF58Q
 bandit21@bandit:~$ 
+____________
+
+connect to bandit22 with given password
