@@ -58,3 +58,7 @@ I am currently working through the **Bandit** wargames. These challenges are des
   * **Concept:** Scheduled tasks (Cron) can be used to perform background actions as different users.
   * **Technique:** Identified a script running every minute as `bandit22`. By analyzing the script's contents, I can find where it stores processed data or temporary files.
   * **Logic:** If a root/high-privilege script writes to a world-readable location (like `/tmp`), the security of the password is compromised.
+* **Level 23 -> 24: Script Spooling & Permissions**
+  * **The Strategy:** Create a bash script that 'leaks' the target password to a world-writable directory.
+  * **Critical Requirement:** The script must have execute permissions (`chmod +x`) and the destination folder must be world-writable (`chmod 777`).
+  * **Lesson:** Scheduled tasks run in the context of their owner. I must provide a script the owner *can* and *will* execute, then wait for the system clock to trigger it.
