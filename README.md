@@ -62,3 +62,11 @@ I am currently working through the **Bandit** wargames. These challenges are des
   * **The Strategy:** Create a bash script that 'leaks' the target password to a world-writable directory.
   * **Critical Requirement:** The script must have execute permissions (`chmod +x`) and the destination folder must be world-writable (`chmod 777`).
   * **Lesson:** Scheduled tasks run in the context of their owner. I must provide a script the owner *can* and *will* execute, then wait for the system clock to trigger it.
+* **Level 25 -> 26: Pager-Based Shell Escape**
+  * **The Hurdle:** The target user has a non-standard shell (`/usr/bin/showtext`) that exits immediately after printing a banner.
+  * **The Vulnerability:** The shell uses `more` to display text. Pagers like `more` or `less` allow users to open editors (like Vim) if the text exceeds the screen height.
+  * **The Attack:**
+    1. Resized the terminal to a few lines to force `more` to pause.
+    2. Pressed `v` to jump into Vim.
+    3. Used Vim's internal command `:set shell=/bin/bash` followed by `:shell` to spawn a functional shell.
+  * **Lesson:** Any program that allows a user to "drop into an editor" is a potential path to full shell access.
