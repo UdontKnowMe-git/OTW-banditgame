@@ -927,3 +927,52 @@ connect to bandit28 with given password
 
 
 - Level 28
+
+Introduced to git log, where it shows the history of commits made to the repository. Used git show 
+to get the details about the specific commit.
+
+Output:
+
+C:\Users\NEXT GEN\Desktop\Overthewire\repo>git log
+commit b0354c7be30f500854c5fc971c57e9cbe632fef6 (HEAD -> master, origin/master, origin/HEAD)
+Author: Morla Porla <morla@overthewire.org>
+Date:   Tue Oct 14 09:26:19 2025 +0000
+
+    fix info leak
+
+commit d0cf2ab7dd7ebc6075b59102a980155268f0fe8f
+Author: Morla Porla <morla@overthewire.org>
+Date:   Tue Oct 14 09:26:19 2025 +0000
+
+    add missing data
+
+commit bd6bc3a57f81518bb2ce63f5816607a754ba730d
+Author: Ben Dover <noone@overthewire.org>
+Date:   Tue Oct 14 09:26:18 2025 +0000
+
+    initial commit of README.md
+
+C:\Users\NEXT GEN\Desktop\Overthewire\repo>git show d0cf2ab7dd7ebc6075b59102a980155268f0fe8f
+commit d0cf2ab7dd7ebc6075b59102a980155268f0fe8f
+Author: Morla Porla <morla@overthewire.org>
+Date:   Tue Oct 14 09:26:19 2025 +0000
+
+    add missing data
+
+diff --git a/README.md b/README.md
+index 7ba2d2f..d4e3b74 100644
+--- a/README.md
++++ b/README.md
+@@ -4,5 +4,5 @@ Some notes for level29 of bandit.
+ ## credentials
+
+ - username: bandit29
+-- password: <TBD>
++- password: 4pT1t5DENaYuqnqvadYs1oE4QLCdjmJ7
+
+____________
+
+connect to bandit29 with given password
+
+
+- Level 29
