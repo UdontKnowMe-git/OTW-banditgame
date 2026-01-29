@@ -70,3 +70,9 @@ I am currently working through the **Bandit** wargames. These challenges are des
     2. Pressed `v` to jump into Vim.
     3. Used Vim's internal command `:set shell=/bin/bash` followed by `:shell` to spawn a functional shell.
   * **Lesson:** Any program that allows a user to "drop into an editor" is a potential path to full shell access.
+* **Level 30 -> 31: Git Tag Forensics**
+  * **The Problem:** `git log` and `git branch` showed a perfectly clean, boring history with no obvious leaks.
+  * **The Breakthrough:** Realized that Git metadata includes 'Tags' which can point to objects not referenced in the current branch's HEAD.
+  * **The Process:** 1. `git tag` revealed a hidden tag.
+    2. `git show [tag_name]` displayed the contents associated with that tag.
+  * **Key Concept:** Tags are static pointers in Git that can survive even if the branches they were created on are deleted or moved.
