@@ -976,3 +976,188 @@ connect to bandit29 with given password
 
 
 - Level 29
+
+This level involved digging deeper into the git commit, eventually discovered the existence
+of more branches, and found the password in the dev branch.
+
+Output:
+
+C:\Users\NEXT GEN\Desktop\Overthewire>git clone ssh://bandit29-git@bandit.labs.overthewire.org:2220/home/bandit29-git/repo
+Cloning into 'repo'...
+                         _                     _ _ _
+                        | |__   __ _ _ __   __| (_) |_
+                        | '_ \ / _` | '_ \ / _` | | __|
+                        | |_) | (_| | | | | (_| | | |_
+                        |_.__/ \__,_|_| |_|\__,_|_|\__|
+
+
+                      This is an OverTheWire game server.
+            More information on http://www.overthewire.org/wargames
+
+backend: gibson-0
+bandit29-git@bandit.labs.overthewire.org's password:
+remote: Enumerating objects: 16, done.
+remote: Counting objects: 100% (16/16), done.
+remote: Compressing objects: 100% (11/11), done.
+remote: Total 16 (delta 2), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (16/16), done.
+Resolving deltas: 100% (2/2), done.
+
+C:\Users\NEXT GEN\Desktop\Overthewire>cd repo
+
+C:\Users\NEXT GEN\Desktop\Overthewire\repo>git show
+commit b879c94bd4641ebb8b5470258b3a41debb25f7c2 (HEAD -> master, origin/master, origin/HEAD)
+Author: Ben Dover <noone@overthewire.org>
+Date:   Tue Oct 14 09:26:20 2025 +0000
+
+    fix username
+
+diff --git a/README.md b/README.md
+index 2da2f39..1af21d3 100644
+--- a/README.md
++++ b/README.md
+@@ -3,6 +3,6 @@ Some notes for bandit30 of bandit.
+
+ ## credentials
+
+-- username: bandit29
++- username: bandit30
+ - password: <no passwords in production!>
+
+C:\Users\NEXT GEN\Desktop\Overthewire\repo>git log
+commit b879c94bd4641ebb8b5470258b3a41debb25f7c2 (HEAD -> master, origin/master, origin/HEAD)
+Author: Ben Dover <noone@overthewire.org>
+Date:   Tue Oct 14 09:26:20 2025 +0000
+
+    fix username
+
+commit 358fb1e671f460043ff5bd372e8d87e228dc148d
+Author: Ben Dover <noone@overthewire.org>
+Date:   Tue Oct 14 09:26:20 2025 +0000
+
+    initial commit of README.md
+
+C:\Users\NEXT GEN\Desktop\Overthewire\repo>git branch -a
+* master
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/dev
+  remotes/origin/master
+  remotes/origin/sploits-dev
+
+C:\Users\NEXT GEN\Desktop\Overthewire\repo>git checkout dev
+branch 'dev' set up to track 'origin/dev'.
+Switched to a new branch 'dev'
+
+C:\Users\NEXT GEN\Desktop\Overthewire\repo>git log
+commit eb435001e0eb0219ee071219d1f16f1cd3941a3b (HEAD -> dev, origin/dev)
+Author: Morla Porla <morla@overthewire.org>
+Date:   Tue Oct 14 09:26:20 2025 +0000
+
+    add data needed for development
+
+commit fac6c810c23f28a475c767df31ae4980252bdd5d
+Author: Ben Dover <noone@overthewire.org>
+Date:   Tue Oct 14 09:26:20 2025 +0000
+
+    add gif2ascii
+
+commit b879c94bd4641ebb8b5470258b3a41debb25f7c2 (origin/master, origin/HEAD, master)
+Author: Ben Dover <noone@overthewire.org>
+Date:   Tue Oct 14 09:26:20 2025 +0000
+
+    fix username
+
+commit 358fb1e671f460043ff5bd372e8d87e228dc148d
+Author: Ben Dover <noone@overthewire.org>
+Date:   Tue Oct 14 09:26:20 2025 +0000
+
+    initial commit of README.md
+
+C:\Users\NEXT GEN\Desktop\Overthewire\repo>git show
+commit eb435001e0eb0219ee071219d1f16f1cd3941a3b (HEAD -> dev, origin/dev)
+Author: Morla Porla <morla@overthewire.org>
+Date:   Tue Oct 14 09:26:20 2025 +0000
+
+    add data needed for development
+
+diff --git a/README.md b/README.md
+index 1af21d3..bc6ad3d 100644
+--- a/README.md
++++ b/README.md
+@@ -4,5 +4,5 @@ Some notes for bandit30 of bandit.
+ ## credentials
+
+ - username: bandit30
+-- password: <no passwords in production!>
++- password: qp30ex3VLz5MDG1n91YowTv4Q8l7CDZL
+____________
+
+continue to bandit30 with given password
+
+
+- Level 30
+
+Found out about git tags and notes, there was a secret tag, which could be accessed by the `git tag` command
+It contained the password for bandit31.
+
+Output:
+
+C:\Users\NEXT GEN\Desktop\Overthewire>git clone ssh://bandit30-git@bandit.labs.overthewire.org:2220/home/bandit30-git/repo
+Cloning into 'repo'...
+                         _                     _ _ _
+                        | |__   __ _ _ __   __| (_) |_
+                        | '_ \ / _` | '_ \ / _` | | __|
+                        | |_) | (_| | | | | (_| | | |_
+                        |_.__/ \__,_|_| |_|\__,_|_|\__|
+
+
+                      This is an OverTheWire game server.
+            More information on http://www.overthewire.org/wargames
+
+backend: gibson-0
+bandit30-git@bandit.labs.overthewire.org's password:
+remote: Enumerating objects: 4, done.
+remote: Counting objects: 100% (4/4), done.
+remote: Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (4/4), done.
+
+C:\Users\NEXT GEN\Desktop\Overthewire>cd repo
+
+C:\Users\NEXT GEN\Desktop\Overthewire\repo>git branch -a
+* master
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/master
+
+C:\Users\NEXT GEN\Desktop\Overthewire\repo>git log
+commit 62152a9969c62cb647406aa88c1b5376dcf58968 (HEAD -> master, origin/master, origin/HEAD)
+Author: Ben Dover <noone@overthewire.org>
+Date:   Tue Oct 14 09:26:22 2025 +0000
+
+    initial commit of README.md
+
+C:\Users\NEXT GEN\Desktop\Overthewire\repo>git show 62152a9969c62cb647406aa88c1b5376dcf58968
+commit 62152a9969c62cb647406aa88c1b5376dcf58968 (HEAD -> master, origin/master, origin/HEAD)
+Author: Ben Dover <noone@overthewire.org>
+Date:   Tue Oct 14 09:26:22 2025 +0000
+
+    initial commit of README.md
+
+diff --git a/README.md b/README.md
+new file mode 100644
+index 0000000..029ba42
+--- /dev/null
++++ b/README.md
+@@ -0,0 +1 @@
++just an epmty file... muahaha
+
+C:\Users\NEXT GEN\Desktop\Overthewire\repo>git tag
+secret
+
+C:\Users\NEXT GEN\Desktop\Overthewire\repo>git show secret
+fb5S2xb7bRyFmAvQYQGEqsbhVyJqhnDy
+____________
+
+continue to bandit31 with given password
+
+
+- Level 31
