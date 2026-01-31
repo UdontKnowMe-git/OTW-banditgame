@@ -1235,3 +1235,151 @@ continue to bandit32 with given password
 
 
 - Level 32
+
+The final level of bandit. When logged in, the shell was stuck in "SHOUTSHELL" which capitalized any
+command which was tried to execute. To bypass this we use $0 positional parameterIn Bash, `$0` represents 
+the name of the currently executing process. By executing `$0` directly, I forced the system to start a 
+new instance of the execution context. This spawned a standard, non-restricted Bourne Shell (`sh`) that 
+didn't have the uppercase filter, allowing me to find the final password.
+
+Output:
+
+C:\Users\NEXT GEN\Desktop\Overthewire>ssh bandit32@bandit.labs.overthewire.org -p 2220
+                         _                     _ _ _
+                        | |__   __ _ _ __   __| (_) |_
+                        | '_ \ / _` | '_ \ / _` | | __|
+                        | |_) | (_| | | | | (_| | | |_
+                        |_.__/ \__,_|_| |_|\__,_|_|\__|
+
+
+                      This is an OverTheWire game server.
+            More information on http://www.overthewire.org/wargames
+
+backend: gibson-0
+bandit32@bandit.labs.overthewire.org's password:
+
+      ,----..            ,----,          .---.
+     /   /   \         ,/   .`|         /. ./|
+    /   .     :      ,`   .'  :     .--'.  ' ;
+   .   /   ;.  \   ;    ;     /    /__./ \ : |
+  .   ;   /  ` ; .'___,/    ,' .--'.  '   \' .
+  ;   |  ; \ ; | |    :     | /___/ \ |    ' '
+  |   :  | ; | ' ;    |.';  ; ;   \  \;      :
+  .   |  ' ' ' : `----'  |  |  \   ;  `      |
+  '   ;  \; /  |     '   :  ;   .   \    .\  ;
+   \   \  ',  /      |   |  '    \   \   ' \ |
+    ;   :    /       '   :  |     :   '  |--"
+     \   \ .'        ;   |.'       \   \ ;
+  www. `---` ver     '---' he       '---" ire.org
+
+
+Welcome to OverTheWire!
+
+If you find any problems, please report them to the #wargames channel on
+discord or IRC.
+
+--[ Playing the games ]--
+
+  This machine might hold several wargames.
+  If you are playing "somegame", then:
+
+    * USERNAMES are somegame0, somegame1, ...
+    * Most LEVELS are stored in /somegame/.
+    * PASSWORDS for each level are stored in /etc/somegame_pass/.
+
+  Write-access to homedirectories is disabled. It is advised to create a
+  working directory with a hard-to-guess name in /tmp/.  You can use the
+  command "mktemp -d" in order to generate a random and hard to guess
+  directory in /tmp/.  Read-access to both /tmp/ is disabled and to /proc
+  restricted so that users cannot snoop on eachother. Files and directories
+  with easily guessable or short names will be periodically deleted! The /tmp
+  directory is regularly wiped.
+  Please play nice:
+
+    * don't leave orphan processes running
+    * don't leave exploit-files laying around
+    * don't annoy other players
+    * don't post passwords or spoilers
+    * again, DONT POST SPOILERS!
+      This includes writeups of your solution on your blog or website!
+
+--[ Tips ]--
+
+  This machine has a 64bit processor and many security-features enabled
+  by default, although ASLR has been switched off.  The following
+  compiler flags might be interesting:
+
+    -m32                    compile for 32bit
+    -fno-stack-protector    disable ProPolice
+    -Wl,-z,norelro          disable relro
+
+  In addition, the execstack tool can be used to flag the stack as
+  executable on ELF binaries.
+
+  Finally, network-access is limited for most levels by a local
+  firewall.
+
+--[ Tools ]--
+
+ For your convenience we have installed a few useful tools which you can find
+ in the following locations:
+
+    * gef (https://github.com/hugsy/gef) in /opt/gef/
+    * pwndbg (https://github.com/pwndbg/pwndbg) in /opt/pwndbg/
+    * gdbinit (https://github.com/gdbinit/Gdbinit) in /opt/gdbinit/
+    * pwntools (https://github.com/Gallopsled/pwntools)
+    * radare2 (http://www.radare.org/)
+
+--[ More information ]--
+
+  For more information regarding individual wargames, visit
+  http://www.overthewire.org/wargames/
+
+  For support, questions or comments, contact us on discord or IRC.
+
+  Enjoy your stay!
+
+WELCOME TO THE UPPERCASE SHELL
+>> dir
+sh: 1: DIR: Permission denied
+>> ls
+sh: 1: LS: Permission denied
+>> $0
+$ dir
+uppershell
+$ cd ..
+$ dir
+bandit0   bandit22      bandit31-git  behemoth6  drifter7     krypton7    manpage6  narnia3  utumno7   vortex20
+bandit1   bandit23      bandit32      behemoth7  drifter8     leviathan0  manpage7  narnia4  utumno8   vortex21
+bandit10  bandit24      bandit33      behemoth8  drifter9     leviathan1  maze0     narnia5  vortex0   vortex22
+bandit11  bandit25      bandit4       drifter0   formulaone0  leviathan2  maze1     narnia6  vortex1   vortex23
+bandit12  bandit26      bandit5       drifter1   formulaone1  leviathan3  maze2     narnia7  vortex10  vortex24
+bandit13  bandit27      bandit6       drifter10  formulaone2  leviathan4  maze3     narnia8  vortex11  vortex25
+bandit14  bandit27-git  bandit7       drifter12  formulaone3  leviathan5  maze4     narnia9  vortex12  vortex3
+bandit15  bandit28      bandit8       drifter13  formulaone5  leviathan6  maze5     ubuntu   vortex13  vortex4
+bandit16  bandit28-git  bandit9       drifter14  formulaone6  leviathan7  maze6     utumno0  vortex14  vortex5
+bandit17  bandit29      behemoth0     drifter15  krypton1     manpage0    maze7     utumno1  vortex15  vortex6
+bandit18  bandit29-git  behemoth1     drifter2   krypton2     manpage1    maze8     utumno2  vortex16  vortex7
+bandit19  bandit3       behemoth2     drifter3   krypton3     manpage2    maze9     utumno3  vortex17  vortex8
+bandit2   bandit30      behemoth3     drifter4   krypton4     manpage3    narnia0   utumno4  vortex18  vortex9
+bandit20  bandit30-git  behemoth4     drifter5   krypton5     manpage4    narnia1   utumno5  vortex19
+bandit21  bandit31      behemoth5     drifter6   krypton6     manpage5    narnia2   utumno6  vortex2
+$ cd bandit33
+$ dir
+README.txt
+$ cat README.txt
+Congratulations on solving the last level of this game!
+
+At this moment, there are no more levels to play in this game. However, we are constantly working
+on new levels and will most likely expand this game with more levels soon.
+Keep an eye out for an announcement on our usual communication channels!
+In the meantime, you could play some of our other wargames.
+
+If you have an idea for an awesome new level, please let us know!
+$ exit
+>> ^CConnection to bandit.labs.overthewire.org closed.
+____________
+
+That's all folks!
+
+Succesfully completed bandit wargame by OverTheWire.org 
