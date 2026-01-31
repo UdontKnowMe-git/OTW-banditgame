@@ -76,3 +76,17 @@ I am currently working through the **Bandit** wargames. These challenges are des
   * **The Process:** 1. `git tag` revealed a hidden tag.
     2. `git show [tag_name]` displayed the contents associated with that tag.
   * **Key Concept:** Tags are static pointers in Git that can survive even if the branches they were created on are deleted or moved.
+* **Level 32: The SHOUTSHELL Escape**
+  * **The Challenge:** Logged into a restricted shell that converted all input to uppercase using a wrapper script. Since Linux is case-sensitive, commands like `ls` or `cat` failed as `LS` and `CAT`.
+  * **The Vulnerability:** The shell's uppercase filter only affected literal text input, not shell expansion variables.
+  * **The Bypass:** Used the positional parameter `$0`. 
+  * **How it works:** In Bash, `$0` represents the name of the currently executing process. By executing `$0` directly, I forced the system to start a new instance of the execution context. 
+  * **The Result:** This spawned a standard, non-restricted Bourne Shell (`sh`) that didn't have the uppercase filter, allowing me to `cat /etc/bandit_pass/bandit33`.
+
+## 🚩 Bandit Series: Graduation Summary
+* **Linux Fundamentals:** Navigated complex file systems, hidden directories, and special filenames.
+* **Permissions & Owners:** Exploited SetUID binaries and learned the nuances of `chmod`, `chown`, and `umask`.
+* **Network Recon:** Used `nc`, `telnet`, `nmap`, and `openssl` to interact with remote services and encrypted ports.
+* **Automation:** Analyzed `cron` jobs and wrote Bash scripts to intercept data and brute-force PINs.
+* **Git Forensics:** Recovered "deleted" secrets from commit histories and tags.
+* **Shell Escapes:** Broke out of restricted environments using pagers (`more`), editors (`vim`), and positional parameters (`$0`).
